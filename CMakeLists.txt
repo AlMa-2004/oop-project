@@ -51,9 +51,19 @@ endif()
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
 add_executable(${PROJECT_NAME}
-    main.cpp
-    generated/src/Helper.cpp
-    env_fixes.h
+        main.cpp
+        headers/Player.h
+        src/Player.cpp
+        headers/Crop.h
+        src/Crop.cpp
+        headers/Item.h
+        src/Item.cpp
+        headers/Time.h
+        src/Time.cpp
+        headers/Animal.h
+        src/Animal.cpp
+
+
 )
 
 include(cmake/CompilerFlags.cmake)

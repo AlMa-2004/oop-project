@@ -1,83 +1,47 @@
 #include <iostream>
 #include <ostream>
 #include <chrono>
-#include <thread>
 #include <SFML/Graphics.hpp>
 #include "headers/Player.h"
-#include "headers/Time.h"
 using namespace std;
-using namespace std::chrono;
 
 int main() {
 
-    sf::Window window(sf::VideoMode(800, 600), "My window");
+    //create a render window
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Agrarian Affair");
+    window.setFramerateLimit(60);
 
-    // run the program as long as the window is open
-    while (window.isOpen())
-    {
-        // check all the window's events that were triggered since the last iteration of the loop
+    //load font
+    sf::Font myFont;
+    if (!myFont.loadFromFile("../fonts/ARCADECLASSIC.ttf")) {
+        std::cout << "Couldn't load the font!!\n";
+        return -1;
+    }
+
+    //create text object
+    sf::Text text("Welcome to the Game!", myFont, 30);
+    text.setFillColor(sf::Color::White);
+    text.setPosition(10, 10);
+
+    //gameloop
+    while (window.isOpen()) {
+
+        //to be replaced
         sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // "close requested" event: we close the window
+        while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+
+        //Similar to double buffering
+        // Clear the screen
+        window.clear();
+        // Draw the text
+        window.draw(text);
+        // Display the frame
+        window.display();
     }
-
-    // TEST TIME CLASS
-    Time gameTime;
-    this_thread::sleep_for(seconds(2));
-    cout << "Elapsed: " << gameTime.elapsed(steady_clock::now()) << "\n";
-
-    // TEST ANIMAL CLASS
-    Animal cow("Marioara", 10, true, false);
-    cout << cow << endl;
-
-    // TEST CROP CLASS
-    Crop wheat("Wheat", 3, gameTime.elapsed(steady_clock::now()), false, true);
-    this_thread::sleep_for(seconds(4));
-    wheat.Grow(gameTime.elapsed(steady_clock::now()));
-
-    Crop corn("Corn", 4, gameTime.elapsed(steady_clock::now()), false, true);
-    this_thread::sleep_for(seconds(2));
-    corn.Grow(gameTime.elapsed(steady_clock::now()));
-
-    // TEST ITEM CLASS
-    Item i1("Wheat", 5);
-    cout << i1 << endl;
-
-    // TEST PLAYER CLASS
-    Item wheatSeeds("Wheat Seeds", 20);
-    // I will continue working with Item-derived functions, specifically modifying the planting functions in the player class
-    Item sunflower("Sunflower", 15);
-    Player player("Ana", 100, {wheatSeeds, sunflower}, {});
-    cout << player << endl;
-
-    player.addItem(Item("Wheat Seeds", 5));
-    player.addItem(Item("Potato", 7));
-    cout << "Inventory after adding items: \n" << player << endl;
-
-    player.Plant("Corn Seeds", 300);
-    player.Plant("Wheat Seeds", 3);  // Attempt to plant 3 seeds
-    cout << "Player status after they've planted the seeds: \n" << player << endl;
-
-    this_thread::sleep_for(seconds(3));
-    cout << "Seed statuses after we've planted them: \n";
-    for (auto& i : player.getField()) {
-        if (!i.getName().empty()) {
-            i.Grow(gameTime.elapsed(steady_clock::now()));
-        }
-    }
-
-    player.Harvest();
-    cout << "Player status after they've harvested the seeds: \n" << player << endl;
-
-    Player p2(player);
-    Player p3 = player;
-    cout << p2 << endl << p3;
 
     return 0;
-
 
 }

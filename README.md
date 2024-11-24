@@ -1,7 +1,7 @@
-# Hay Day
+# Agrarian Affair
 
 ## Descriere proiect
-Un simulator de ferma in care jucatorul poate creste animale si grane, ca ulterior sa le culeaga sau colecteze in scopul vanzarii.
+A simple and relaxing farm simulator where players grow crops, raise a few animals, and sell their harvest to earn coins. The focus is on casual gameplay, easy mechanics, and an enjoyable farming experience.
 
 ## Milestone #0
 
@@ -29,7 +29,7 @@ Un simulator de ferma in care jucatorul poate creste animale si grane, ca ulteri
 ## Milestone #2
 
 #### Cerințe
-- [x] separarea codului din clase în `.h` (sau `.hpp`) și `.cpp`
+- [x] separarea codului din clase în `.h` (sau `.hpp`) și `.cpp` 
 - [ ] moșteniri:
   - minim o clasă de bază și **3 clase derivate** din aceeași ierarhie
   - ierarhia trebuie să fie cu bază proprie, nu derivată dintr-o clasă predefinită
@@ -51,7 +51,7 @@ Un simulator de ferma in care jucatorul poate creste animale si grane, ca ulteri
 - [ ] cât mai multe `const`
 - [ ] funcții *de nivel înalt*, de eliminat cât mai mulți getters/setters/funcții low-level
 - [ ] tag de `git`: de exemplu `v0.2`
-
+  
 ## Milestone #3
 
 #### Cerințe

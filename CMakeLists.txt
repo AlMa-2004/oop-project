@@ -58,10 +58,10 @@ add_executable(${PROJECT_NAME}
         src/Crop.cpp
         headers/Item.h
         src/Item.cpp
-        headers/Time.h
-        src/Time.cpp
         headers/Animal.h
         src/Animal.cpp
+        headers/Menu.h
+        src/Menu.cpp
 
 
 )

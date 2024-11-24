@@ -45,10 +45,11 @@ void Crop::Grow(long long seconds)
         cropGrowthStatus = true;
         std::cout << "The crop " << cropName << " has grown!\n";
     }
-    else std::cout << "The crop " << cropName << " is still growing!\n";
+    //else std::cout << "The crop " << cropName << " is still growing!\n";
 }
 
 [[nodiscard]] std::string Crop::getName() const { return cropName; }
 [[nodiscard]] bool Crop::getGrowthStatus() const { return cropGrowthStatus; }
 void Crop::setWateredStatus(bool t) { cropWateredStatus = t; }
 [[nodiscard]] bool Crop::getWateredStatus() const { return cropWateredStatus; }
+void Crop::setTimeStampPlanted(long long t) { timeStampPlanted = t; }

@@ -25,6 +25,7 @@ public:
     [[nodiscard]] bool getGrowthStatus() const;
     [[nodiscard]] bool getWateredStatus() const;
     void setWateredStatus(bool t);
+    void setTimeStampPlanted(long long t);
     friend void Harvest();
 };
 #endif //CROP_H

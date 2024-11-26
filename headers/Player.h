@@ -4,9 +4,9 @@
 #include <array>
 #include <vector>
 #include <iostream>
-#include "../headers/Crop.h"
-#include "../headers/Item.h"
-#include "../headers/Animal.h"
+#include "Crop.h"
+#include "Item.h"
+#include "Animal.h"
 
 class Player
 {
@@ -15,7 +15,7 @@ class Player
 
     //REPLACE WITH SMART POINTERS & MODIFY SIZE OF FIELD - POSSIBLE LOTS WHERE CROPS CAN BE PLANTED
     std::vector<Item> Inventory;
-    std::array<Crop, 5> Field;
+    //std::array<Crop, 5> Field;
     //vector<Animal> Barn;
 
 public:

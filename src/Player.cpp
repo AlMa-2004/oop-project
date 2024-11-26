@@ -98,6 +98,7 @@ void Player::Plant(const std::string& s, int no)
 
     std::cout << "Planting...\n";
 
+    /*
     int noPlanted = 0;
     for (auto& lot : Field)
     {
@@ -113,6 +114,7 @@ void Player::Plant(const std::string& s, int no)
     {
         std::cout << "You don't have enough free lots for planting those seeds.\n";
     }
+    */
 }
 
 void Player::Harvest()

@@ -36,16 +36,15 @@ std::ostream& operator<<(std::ostream& os, const Crop& obj)
     return os;
 }
 
-/*
-void Crop::Grow(long long seconds)
+void Crop::grow(const long long seconds)
 {
-    if (isGrown == false && (seconds - timeStampPlanted) >= cropGrowthTime)
+    if (isGrown == false && isPlanted == true && (seconds - timeStampPlanted) >= cropGrowthTime)
     {
         isGrown = true;
         std::cout << "The crop " << cropName << " has grown!\n";
     }
     //else std::cout << "The crop " << cropName << " is still growing!\n";
 }
-*/
+
 [[nodiscard]] std::string Crop::getName() const { return cropName; }
-//[[nodiscard]] bool Crop::getGrowthStatus() const { return isGrown; }
+[[nodiscard]] bool Crop::getGrowthStatus() const { return isGrown; }

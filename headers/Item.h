@@ -7,12 +7,22 @@ class Item
 {
     std::string itemName;
     int itemQuantity;
+    int itemSellingPrice;
 
 public:
-    explicit Item(std::string n, int c);
+    explicit Item(std::string n, int c, int price);
+
     [[nodiscard]] std::string getName() const;
+
     [[nodiscard]] int getQuantity() const;
+
     void setQuantity(int c);
+
+    //Function calculates the selling price of an item and
+    //a certain quantity (if the quantity is bigger in value than
+    //itemQuantity, it returns the price * its actual quantity (maximum))
+    [[nodiscard]] int calculateSellingPrice(int c) const;
+
     friend std::ostream& operator<<(std::ostream& os, const Item& obj);
 };
 #endif //ITEM_H

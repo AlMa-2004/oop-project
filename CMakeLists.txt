@@ -62,6 +62,16 @@ add_executable(${PROJECT_NAME}
         src/Animal.cpp
         headers/Menu.h
         src/Menu.cpp
+        headers/Seed.h
+        src/Seed.cpp
+        headers/Field.h
+        src/Field.cpp
+        headers/Wheat.h
+        headers/Corn.h
+        src/Wheat.cpp
+        src/Corn.cpp
+        headers/Tomato.cpp
+        headers/Tomato.h
 
 
 )

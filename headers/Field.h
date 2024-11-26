@@ -10,10 +10,14 @@ class Field
     std::vector<std::unique_ptr<Crop>> lots;
 
 public:
-
     //For the simplicity of the game, the field in not a matrix,
     //just a simple line with a few lots
     explicit Field(int l);
+
+    //function to check if a lot is available or not
+    [[nodiscard]] int getLotStatus(int x) const;
+
+    [[nodiscard]] int getLength() const;
 
     //Function that checks if lot is empty and puts
     //a crop there (the conversion from seed to crop)

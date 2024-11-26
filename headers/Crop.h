@@ -9,12 +9,12 @@
 //between the class Seed and this class' subclasses (see Seed class)
 class Crop
 {
+    protected:
     //This attribute cannot possibly be 0, since t=0 is allocated for initialisation of assets/
     //Everytime a crop object is created (aka planted in the field), this attribute must take the current timestamp
     //of the elapsed in-game time.
     long long timeStampPlanted;
 
-    //serves purpose later in the hierarchy for differentiating types of seeds
     std::string cropName;
 
     //how much elapsed time it needs in order to grow
@@ -32,7 +32,7 @@ class Crop
 public:
     Crop();
     explicit Crop(std::string name, int growth_time, long long time_stamp_planted,
-                  bool growth_status, bool watered_status);
+                  bool planted_status, bool growth_status);
     virtual ~Crop() = default;
 
 

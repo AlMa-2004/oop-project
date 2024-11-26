@@ -12,9 +12,7 @@ class Player
 {
     std::string playerName;
     int playerMoney;
-
-    //REPLACE WITH SMART POINTERS & MODIFY SIZE OF FIELD - POSSIBLE LOTS WHERE CROPS CAN BE PLANTED
-    std::vector<Item> Inventory;
+    //std::vector<Item> Inventory;
     //std::array<Crop, 5> Field;
     //vector<Animal> Barn;
 
@@ -34,10 +32,6 @@ public:
     //INVENTORY MANAGEMENT
     void addItem(const Item& i);
 
-    //FIELD MANAGEMENT
-    void Plant(const std::string& s, int nr);
-    void Harvest();
-    std::array<Crop, 5>& getField();
 };
 
 

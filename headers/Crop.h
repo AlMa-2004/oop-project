@@ -35,7 +35,7 @@ public:
                   bool planted_status, bool growth_status);
     virtual ~Crop() = default;
 
-
+    Crop(const Crop &other) = default;
     Crop& operator=(const Crop& other);
     friend std::ostream& operator<<(std::ostream& os, const Crop& obj);
 

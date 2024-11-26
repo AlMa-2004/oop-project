@@ -9,9 +9,9 @@ Player::Player(): playerName("Player"), playerMoney(0)
     std::cout << "Default player constructor\n";
 }
 
-Player::Player(std::string name="Player", const int money=0, const std::vector<Item>& items={},
-               const std::array<Crop, 5>& field={}) : playerName(std::move(name)),
-                                                        playerMoney(money)//, Inventory(items)
+Player::Player(std::string name="Player", const int money=0) :
+playerName(std::move(name)),
+playerMoney(money)
 {
     std::cout << "Parameterised player constructor\n";
 }
@@ -19,7 +19,6 @@ Player::Player(std::string name="Player", const int money=0, const std::vector<I
 Player::Player(const Player& p):
     playerName(p.playerName),
     playerMoney(p.playerMoney)
-    //,Inventory(p.Inventory)
 {
     std::cout << "Copy player constructor\n";
 }
@@ -31,7 +30,6 @@ Player& Player::operator=(const Player& p)
 {
     this->playerName = p.playerName;
     this->playerMoney = p.playerMoney;
-    //this->Inventory = p.Inventory;
     std::cout << "Player assignment\n";
     return *this;
 }
@@ -41,8 +39,6 @@ std::ostream& operator<<(std::ostream& os, const Player& player)
     os << "PlayerName: " << player.playerName
         << " Money: " << player.playerMoney
         << " Inventory: ";
-   // for (auto& i : player.Inventory)
-    //    os << i << " ";
     return os;
 }
 

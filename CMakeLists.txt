@@ -67,12 +67,11 @@ add_executable(${PROJECT_NAME}
         headers/Field.h
         src/Field.cpp
         headers/Wheat.h
-        headers/Corn.h
         src/Wheat.cpp
+        headers/Corn.h
         src/Corn.cpp
-        headers/Tomato.cpp
         headers/Tomato.h
-
+        src/Tomato.cpp
 
 )
 

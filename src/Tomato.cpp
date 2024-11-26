@@ -10,12 +10,12 @@ Tomato::Tomato(int growthTime, long long plantedTimestamp)
 {
 }
 
-[[nodiscard]] std::unique_ptr<Crop> Tomato::clone() const override
+[[nodiscard]] std::unique_ptr<Crop> Tomato::clone() const
 {
     return std::make_unique<Tomato>(*this);
 }
 
-[[nodiscard]] std::unique_ptr<Item> Tomato::harvest() override
+[[nodiscard]] std::unique_ptr<Item> Tomato::harvest()
 {
     std::cout << "Harvesting tomatoes!\n";
     return std::make_unique<Item>("Tomato Crate", 20, 10);

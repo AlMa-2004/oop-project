@@ -6,7 +6,7 @@
 #include <iostream>
 #include "Crop.h"
 #include "Item.h"
-#include "Animal.h"
+//#include "Animal.h"
 
 class Player
 {
@@ -19,8 +19,7 @@ class Player
 public:
     //CONSTRUCTORS & DESTRUCTORS
     Player();
-    explicit Player(std::string name, int money, const std::vector<Item>& items,
-                    const std::array<Crop, 5>& field);
+    explicit Player(std::string name, int money);
     Player(const Player& p);
 
     ~Player();
@@ -30,7 +29,7 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Player& player);
 
     //INVENTORY MANAGEMENT
-    void addItem(const Item& i);
+//    void addItem(const Item& i);
 
 };
 

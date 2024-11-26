@@ -10,12 +10,12 @@ Corn::Corn(int growthTime, long long plantedTimestamp)
 {
 }
 
-[[nodiscard]] std::unique_ptr<Crop> Corn::clone() const override
+[[nodiscard]] std::unique_ptr<Crop> Corn::clone() const
 {
     return std::make_unique<Corn>(*this);
 }
 
-[[nodiscard]] std::unique_ptr<Item> Corn::harvest() override
+[[nodiscard]] std::unique_ptr<Item> Corn::harvest()
 {
     std::cout << "Harvesting Corn\n";
     return std::make_unique<Item>("Corn Basket", 10, 5);

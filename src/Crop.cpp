@@ -8,8 +8,8 @@ Crop::Crop(): timeStampPlanted(0),
 {
 }
 
-Crop::Crop(std::string name, const int growth_time = 0, long long time_stamp_planted = 0,
-           const bool growth_status = false, const bool planted_status = false)
+Crop::Crop(std::string name, const int growth_time=1, const long long time_stamp_planted=0,
+                  const bool planted_status=false,const bool growth_status=false)
     : timeStampPlanted(time_stamp_planted),
       cropName(std::move(name)),
       cropGrowthTime(growth_time),

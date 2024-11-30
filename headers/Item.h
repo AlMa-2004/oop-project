@@ -19,8 +19,7 @@ public:
     void setQuantity(int c);
 
     //Function calculates the selling price of an item and
-    //a certain quantity (if the quantity is bigger in value than
-    //itemQuantity, it returns the price * its actual quantity (maximum))
+    //a certain quantity
     [[nodiscard]] int calculateSellingPrice(int c) const;
 
     friend std::ostream& operator<<(std::ostream& os, const Item& obj);

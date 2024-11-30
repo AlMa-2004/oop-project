@@ -16,9 +16,7 @@ void Item::setQuantity(const int c) { itemQuantity = c; }
 
 int Item::calculateSellingPrice(const int c) const
 {
-    if (c <= itemQuantity)
-        return itemSellingPrice * c;
-    return itemSellingPrice * itemQuantity;
+    return itemSellingPrice * c;
 }
 
 std::ostream& operator<<(std::ostream& os, const Item& obj)

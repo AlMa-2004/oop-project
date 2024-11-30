@@ -9,7 +9,7 @@
 //between the class Seed and this class' subclasses (see Seed class)
 class Crop
 {
-    protected:
+protected:
     //This attribute cannot possibly be 0, since t=0 is allocated for initialisation of assets/
     //Everytime a crop object is created (aka planted in the field), this attribute must take the current timestamp
     //of the elapsed in-game time.
@@ -35,7 +35,7 @@ public:
                   bool planted_status, bool growth_status);
     virtual ~Crop() = default;
 
-    Crop(const Crop &other) = default;
+    Crop(const Crop& other) = default;
     Crop& operator=(const Crop& other);
     friend std::ostream& operator<<(std::ostream& os, const Crop& obj);
 

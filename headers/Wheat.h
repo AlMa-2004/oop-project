@@ -4,7 +4,8 @@
 #include "Crop.h"
 #include "Item.h"
 
-class Wheat : public Crop {
+class Wheat : public Crop
+{
 public:
     Wheat();
 

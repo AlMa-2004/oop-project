@@ -44,3 +44,21 @@ std::unique_ptr<Item> Field::harvestCrop(const int x)
     }
     return nullptr;
 }
+
+template <typename T>
+std::unique_ptr<Item> Field::harvestCrop()
+{
+    for (auto& lot : lots)
+    {
+        if (lot->getGrowthStatus() && lot)
+        {
+            if (auto* specificCrop = dynamic_cast<T*>(lot.get()))
+            {
+                auto harvested = specificCrop->harvest();
+                lot.reset();
+                return harvested;
+            }
+        }
+    }
+    return nullptr;
+}

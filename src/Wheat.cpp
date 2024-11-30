@@ -21,4 +21,3 @@ Wheat::Wheat(int growthTime, long long plantedTimestamp)
     std::cout << "Harvesting wheat\n";
     return std::make_unique<Item>("Wheat Bundle", 10, 5);
 }
-

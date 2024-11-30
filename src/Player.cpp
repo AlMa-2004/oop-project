@@ -1,59 +1,99 @@
-//
-// Created by alexa on 19.11.2024.
-//
-
 #include "../headers/Player.h"
 
-Player::Player(): playerName("Player"), playerMoney(0)
-{
+Player::Player()
+    : playerName("Player"), playerMoney(0) {
     std::cout << "Default player constructor\n";
 }
 
-Player::Player(std::string name="Player", const int money=0) :
-playerName(std::move(name)),
-playerMoney(money)
-{
-    std::cout << "Parameterised player constructor\n";
+// Parameterized constructor: initializes player with given name and money
+Player::Player(std::string name, int money)
+    : playerName(std::move(name)), playerMoney(money) {
+    std::cout << "Parameterized player constructor\n";
 }
-
-Player::Player(const Player& p):
-    playerName(p.playerName),
-    playerMoney(p.playerMoney)
+/*
+Player::Player(const Player& p)
+    : playerName(p.playerName), playerMoney(p.playerMoney)
 {
     std::cout << "Copy player constructor\n";
+    for (const auto& item : p.playerInventory)
+    {
+        playerInventory.push_back(std::make_unique<Item>(*item));
+    }
 }
-
-Player::~Player() = default;
+*/
 
 //OPERATOR OVERLOADING
+/*
 Player& Player::operator=(const Player& p)
 {
-    this->playerName = p.playerName;
-    this->playerMoney = p.playerMoney;
+    playerName = p.playerName;
+    playerMoney = p.playerMoney;
+    playerInventory.clear();
+
+    for (const auto& item : p.playerInventory)
+    {
+        playerInventory.push_back(std::make_unique<Item>(*item));
+    }
     std::cout << "Player assignment\n";
     return *this;
 }
-
+*/
 std::ostream& operator<<(std::ostream& os, const Player& player)
 {
     os << "PlayerName: " << player.playerName
         << " Money: " << player.playerMoney
         << " Inventory: ";
+    // showInventory();
+
     return os;
 }
 
-//INVENTORY MANAGEMENT
-/*
-void Player::addItem(const Item& i)
+void Player::addItem(std::unique_ptr<Item> i)
 {
-    for (auto& item : Inventory)
+    for (auto& item : playerInventory)
     {
-        if (item.getName() == i.getName())
+        if (item->getName() == i->getName())
         {
-            item.setQuantity(item.getQuantity() + i.getQuantity());
+            item->setQuantity(item->getQuantity() + i->getQuantity());
             return;
         }
     }
-    Inventory.push_back(i);
+    playerInventory.push_back(std::move(i));
 }
-*/
+
+
+std::vector<std::unique_ptr<Item>>::iterator Player::searchItem(const std::string& itemName)
+{
+    return std::ranges::find_if(playerInventory.begin(), playerInventory.end(),
+                                [&itemName](const std::unique_ptr<Item>& item)
+                                {
+                                    return item->getName() == itemName;
+                                });
+}
+
+void Player::removeItem(const std::string& s, const int q)
+{
+    auto found = searchItem(s);
+    if (found != playerInventory.end())
+    {
+        if (q == (*found)->getQuantity())
+            playerInventory.erase(found);
+        else
+            (*found)->setQuantity((*found)->getQuantity() - q);
+    }
+}
+
+
+void Player::sellItem(const std::string& s, const int q)
+{
+    auto found = searchItem(s);
+    if (found != playerInventory.end())
+        playerMoney += (*found)->calculateSellingPrice(q);
+    removeItem(s, q);
+}
+
+void Player::showInventory() const
+{
+    for (const auto& item : playerInventory)
+        std::cout << *item << " ";  // Assuming Item has an operator<< defined
+}

@@ -1,12 +1,12 @@
 #include "../headers/Tomato.h"
 
 Tomato::Tomato()
-    : Crop("Tomato", 2, 0, false, true)
+    : Crop("Tomato", 2, 0, false)
 {
 }
 
 Tomato::Tomato(int growthTime, long long plantedTimestamp)
-    : Crop("Tomato", growthTime, plantedTimestamp, false, false)
+    : Crop("Tomato", growthTime, plantedTimestamp, false)
 {
 }
 

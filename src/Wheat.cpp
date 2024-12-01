@@ -2,12 +2,12 @@
 
 
 Wheat::Wheat()
-    : Crop("Wheat", 10, 0, false, false)
+    : Crop("Wheat", 10, 0, false)
 {
 }
 
 Wheat::Wheat(int growthTime, long long plantedTimestamp)
-    : Crop("Wheat", growthTime, plantedTimestamp, false, false)
+    : Crop("Wheat", growthTime, plantedTimestamp, false)
 {
 }
 

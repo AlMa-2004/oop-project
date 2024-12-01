@@ -1,12 +1,12 @@
 #include "../../headers/Corn.h"
 
 Corn::Corn()
-    : Crop("Corn", 5, 0, false, false)
+    : Crop("Corn", 5, 0, false)
 {
 }
 
 Corn::Corn(int growthTime, long long plantedTimestamp)
-    : Crop("Corn", growthTime, plantedTimestamp, false, false)
+    : Crop("Corn", growthTime, plantedTimestamp, false)
 {
 }
 

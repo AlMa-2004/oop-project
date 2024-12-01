@@ -2,7 +2,9 @@
 #define FIELD_H
 #include <vector>
 #include <memory>
+#include <algorithm>
 #include "Crop.h"
+#include "FieldExceptions.h"
 
 class Field
 {
@@ -42,19 +44,25 @@ public:
     template <typename T>
     std::shared_ptr<Item> harvestCropLike()
     {
+        int ok = 0; //this function can throw 2 different exceptions, this differentiates them
         for (auto& lot : lots)
         {
-            if (lot->getGrowthStatus() && lot)
-            {
-                if (auto* specificCrop = dynamic_cast<T*>(lot.get()))
+            if (lot != nullptr)
+                if (lot->getGrowthStatus())
                 {
-                    auto harvested = specificCrop->harvest();
-                    lot.reset();
-                    return harvested;
+                    ok = 1;
+                    if (auto* specificCrop = dynamic_cast<T*>(lot.get()))
+                    {
+                        auto harvested = specificCrop->harvest();
+                        lot.reset();
+                        return harvested;
+                    }
                 }
-            }
         }
-        return nullptr;
+        if (ok == 0)
+            throw EmptyLotException();
+        else
+            throw CropNotFoundException();
     }
 };
 #endif //FIELD_H

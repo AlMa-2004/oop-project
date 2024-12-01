@@ -3,17 +3,15 @@
 Crop::Crop(): timeStampPlanted(0),
               cropName("Crop"),
               cropGrowthTime(1),
-              isPlanted(false),
               isGrown(false)
 {
 }
 
-Crop::Crop(std::string name, const int growth_time=1, const long long time_stamp_planted=0,
-                  const bool planted_status=false,const bool growth_status=false)
+Crop::Crop(std::string name, const int growth_time = 1, const long long time_stamp_planted = 0,
+           const bool growth_status = false)
     : timeStampPlanted(time_stamp_planted),
       cropName(std::move(name)),
       cropGrowthTime(growth_time),
-      isPlanted(planted_status),
       isGrown(growth_status)
 {
 }
@@ -38,7 +36,7 @@ std::ostream& operator<<(std::ostream& os, const Crop& obj)
 
 void Crop::grow(const long long seconds)
 {
-    if (isGrown == false && isPlanted == true && (seconds - timeStampPlanted) >= cropGrowthTime)
+    if (isGrown == false && (seconds - timeStampPlanted) >= cropGrowthTime)
     {
         isGrown = true;
         std::cout << "The crop " << cropName << " has grown!\n";

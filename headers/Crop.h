@@ -20,19 +20,11 @@ protected:
     //how much elapsed time it needs in order to grow
     int cropGrowthTime;
 
-    //attribute which ensures the proper growth of the planted crop;
-    //due to the fact that the game loop might iterate through the creation
-    //of an object with each frame (while the window is open), we prevent this
-    //by making the attribute true (it never really changes its value from true,
-    //it's a mere artifice)
-    bool isPlanted;
-
     bool isGrown;
 
 public:
     Crop();
-    explicit Crop(std::string name, int growth_time, long long time_stamp_planted,
-                  bool planted_status, bool growth_status);
+    explicit Crop(std::string name, int growth_time, long long time_stamp_planted, bool growth_status);
     virtual ~Crop() = default;
 
     Crop(const Crop& other) = default;

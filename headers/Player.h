@@ -28,7 +28,6 @@ public:
     void removeItem(const std::string& s, int q);
     void sellItem(const std::string& s, int q);
     void showInventory() const;
-    [[nodiscard]] int getMoney() const;
 };
 
 

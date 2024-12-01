@@ -1,4 +1,5 @@
 #include "../headers/Player.h"
+#include "../headers/InventoryExceptions.h"
 
 Player::Player()
     : playerName("Player"), playerMoney(0)
@@ -62,18 +63,24 @@ void Player::addItem(const std::shared_ptr<Item>& i)
         }
     }
     playerInventory.push_back(i);
-    std::cout<<"Added item: "<<i->getName()<<" succesfully!\n";
+    std::cout << "Added item: " << i->getName() << " succesfully!\n";
 }
 
 
 std::vector<std::shared_ptr<Item>>::iterator Player::searchItem(const std::string& itemName)
 {
-    return std::ranges::find_if(playerInventory.begin(), playerInventory.end(),
-                                [&itemName](const std::shared_ptr<Item>& item)
-                                {
-                                    return item->getName() == itemName;
-                                });
+    const auto& it = std::ranges::find_if(playerInventory.begin(), playerInventory.end(),
+                                          [&itemName](const std::shared_ptr<Item>& item)
+                                          {
+                                              return item->getName() == itemName;
+                                          });
+    if (it == playerInventory.end())
+    {
+        throw InventoryException();
+    }
+    return it;
 }
+
 
 void Player::removeItem(const std::string& s, const int q)
 {
@@ -100,9 +107,4 @@ void Player::showInventory() const
 {
     for (const auto& item : playerInventory)
         std::cout << *item << " ";
-}
-
-int Player::getMoney() const
-{
-    return playerMoney;
 }

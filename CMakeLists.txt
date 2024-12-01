@@ -72,6 +72,8 @@ add_executable(${PROJECT_NAME}
         src/Corn.cpp
         headers/Tomato.h
         src/Tomato.cpp
+        headers/FieldExceptions.h
+        headers/InventoryExceptions.h
 
 )
 

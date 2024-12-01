@@ -1,4 +1,5 @@
 #include "../headers/Field.h"
+#include "../headers/FieldExceptions.h"
 
 Field::Field(const int l): lots(l)
 {
@@ -19,9 +20,9 @@ void Field::plantCrop(const int x, std::unique_ptr<Crop> c)
     if (lots[x] == nullptr)
     {
         lots[x] = std::move(c);
-        //i can either use the local copy of the crop pointer with std::move
+        // the local copy of the crop pointer with std::move can be used
         //or
-        //read it from the argument list as a const reference and clone that
+        //read from the argument list as a const reference and cloned
     }
 }
 
@@ -43,5 +44,5 @@ std::shared_ptr<Item> Field::harvestCrop(const int x)
         lots[x].reset();
         return harvested;
     }
-    return nullptr;
+    throw EmptyLotException();
 }

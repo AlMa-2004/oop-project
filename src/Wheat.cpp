@@ -16,8 +16,8 @@ Wheat::Wheat(int growthTime, long long plantedTimestamp)
     return std::make_unique<Wheat>(*this);
 }
 
-[[nodiscard]] std::unique_ptr<Item> Wheat::harvest()
+[[nodiscard]] std::shared_ptr<Item> Wheat::harvest()
 {
     std::cout << "Harvesting wheat\n";
-    return std::make_unique<Item>("Wheat Bundle", 10, 5);
+    return std::make_shared<Item>("Wheat Bundle", 10, 5);
 }

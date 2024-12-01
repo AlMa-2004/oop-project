@@ -6,7 +6,6 @@
 
 class Field
 {
-    int length;
     std::vector<std::unique_ptr<Crop>> lots;
 
 public:
@@ -32,15 +31,30 @@ public:
     //and resets/null the certain lot pointer
     //This function works polymorphically!
     //Both Item and Crop classes are based classes, but they are never handled
-    std::unique_ptr<Item> harvestCrop(int x);
+    std::shared_ptr<Item> harvestCrop(int x);
 
-    //this is an overloaded function which uses
+    //this function uses
     //down casting to "sort" through the planted crops in the field
     //and harvests the desired crops
     //as dynamic_cast isn't implemented for unique_ptr's, and we can't
     //know the type until runtime (if's on typeid's are not recommended)
     //usage of a template is the best option
     template <typename T>
-    std::unique_ptr<Item> harvestCrop();
+    std::shared_ptr<Item> harvestCropLike()
+    {
+        for (auto& lot : lots)
+        {
+            if (lot->getGrowthStatus() && lot)
+            {
+                if (auto* specificCrop = dynamic_cast<T*>(lot.get()))
+                {
+                    auto harvested = specificCrop->harvest();
+                    lot.reset();
+                    return harvested;
+                }
+            }
+        }
+        return nullptr;
+    }
 };
 #endif //FIELD_H

@@ -5,7 +5,7 @@ Item::Item(std::string n, const int c = 1, const int price = 10)
       itemQuantity(c),
       itemSellingPrice(price)
 {
-    std::cout << "Item constructor\n";
+    //std::cout << "Item constructor\n";
 }
 
 [[nodiscard]] std::string Item::getName() const { return itemName; }

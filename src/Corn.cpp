@@ -15,9 +15,9 @@ Corn::Corn(int growthTime, long long plantedTimestamp)
     return std::make_unique<Corn>(*this);
 }
 
-[[nodiscard]] std::unique_ptr<Item> Corn::harvest()
+[[nodiscard]] std::shared_ptr<Item> Corn::harvest()
 {
     std::cout << "Harvesting Corn\n";
-    return std::make_unique<Item>("Corn Basket", 10, 5);
+    return std::make_shared<Item>("Corn Basket", 10, 5);
 }
 

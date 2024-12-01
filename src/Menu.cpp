@@ -107,13 +107,3 @@ int Menu::showMenu()
     }
     return 0;
 }
-
-int Menu::showTutorial()
-{
-    sf::Text startText("To be completed\n", myFont, 50);
-    startText.setFillColor(sf::Color::White);
-    startText.setPosition(300, 150);
-
-    return 0;
-};
-

@@ -1,15 +1,18 @@
 #include "../headers/Player.h"
 
 Player::Player()
-    : playerName("Player"), playerMoney(0) {
-    std::cout << "Default player constructor\n";
+    : playerName("Player"), playerMoney(0)
+{
+    //::cout << "Default player constructor\n";
 }
 
 // Parameterized constructor: initializes player with given name and money
-Player::Player(std::string name, int money)
-    : playerName(std::move(name)), playerMoney(money) {
-    std::cout << "Parameterized player constructor\n";
+Player::Player(std::string name, const int money)
+    : playerName(std::move(name)), playerMoney(money)
+{
+    //std::cout << "Parameterized player constructor\n";
 }
+
 /*
 Player::Player(const Player& p)
     : playerName(p.playerName), playerMoney(p.playerMoney)
@@ -48,7 +51,7 @@ std::ostream& operator<<(std::ostream& os, const Player& player)
     return os;
 }
 
-void Player::addItem(std::unique_ptr<Item> i)
+void Player::addItem(const std::shared_ptr<Item>& i)
 {
     for (auto& item : playerInventory)
     {
@@ -58,14 +61,15 @@ void Player::addItem(std::unique_ptr<Item> i)
             return;
         }
     }
-    playerInventory.push_back(std::move(i));
+    playerInventory.push_back(i);
+    std::cout<<"Added item: "<<i->getName()<<" succesfully!\n";
 }
 
 
-std::vector<std::unique_ptr<Item>>::iterator Player::searchItem(const std::string& itemName)
+std::vector<std::shared_ptr<Item>>::iterator Player::searchItem(const std::string& itemName)
 {
     return std::ranges::find_if(playerInventory.begin(), playerInventory.end(),
-                                [&itemName](const std::unique_ptr<Item>& item)
+                                [&itemName](const std::shared_ptr<Item>& item)
                                 {
                                     return item->getName() == itemName;
                                 });
@@ -95,5 +99,10 @@ void Player::sellItem(const std::string& s, const int q)
 void Player::showInventory() const
 {
     for (const auto& item : playerInventory)
-        std::cout << *item << " ";  // Assuming Item has an operator<< defined
+        std::cout << *item << " ";
+}
+
+int Player::getMoney() const
+{
+    return playerMoney;
 }

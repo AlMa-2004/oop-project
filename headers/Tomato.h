@@ -9,7 +9,7 @@ public:
     Tomato();
     Tomato(int growthTime, long long plantedTimestamp);
     [[nodiscard]] std::unique_ptr<Crop> clone() const override;
-    [[nodiscard]] std::unique_ptr<Item> harvest() override;
+    [[nodiscard]] std::shared_ptr<Item> harvest() override;
 };
 
 #endif //TOMATO_H

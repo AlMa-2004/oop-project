@@ -13,7 +13,7 @@ public:
 
     [[nodiscard]] std::unique_ptr<Crop> clone() const override;
 
-    [[nodiscard]] std::unique_ptr<Item> harvest() override;
+    [[nodiscard]] std::shared_ptr<Item> harvest() override;
 };
 
 #endif // WHEAT_H

@@ -14,7 +14,6 @@ class Menu
 
     public:
     static int showMenu();
-    static int showTutorial();
 };
 
 #endif //MENU_H

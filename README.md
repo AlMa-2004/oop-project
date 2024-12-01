@@ -42,9 +42,9 @@ A simple and relaxing farm simulator where players grow crops, feed a few animal
     - [?] suprascris cc/op= pentru copieri/atribuiri corecte, copy and swap
     - [x] `dynamic_cast`/`std::dynamic_pointer_cast` pentru downcast cu sens
     - [x] smart pointers (recomandat, opțional)
-- [ ] excepții
-  - [ ] ierarhie proprie cu baza `std::exception` sau derivată din `std::exception`; minim **3** clase pentru erori specifice
-  - [ ] utilizare cu sens: de exemplu, `throw` în constructor (sau funcție care întoarce un obiect), `try`/`catch` în `main`
+- [x] excepții
+  - [x] ierarhie proprie cu baza `std::exception` sau derivată din `std::exception`; minim **3** clase pentru erori specifice
+  - [x] utilizare cu sens: de exemplu, `throw` în constructor (sau funcție care întoarce un obiect), `try`/`catch` în `main`
   - această ierarhie va fi complet independentă de ierarhia cu funcții virtuale
 - [x] funcții și atribute `static`
 - [x] STL
@@ -55,9 +55,9 @@ A simple and relaxing farm simulator where players grow crops, feed a few animal
 ## Milestone #3
 
 #### Cerințe
-- [ ] 2 șabloane de proiectare (design patterns)
+- [ ] 2 șabloane de proiectare (design patterns)(1/2)
 - [ ] o clasă șablon cu sens; minim **2 instanțieri**
-  - [ ] preferabil și o funcție șablon (template) cu sens; minim 2 instanțieri
+  - [ ] preferabil și o funcție șablon (template) cu sens; minim 2 instanțieri(1/2)
 - [ ] tag de `git`: de exemplu `v0.3` sau `v1.0`
 
 ## Resurse

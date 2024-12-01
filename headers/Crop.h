@@ -43,7 +43,7 @@ public:
 
     //usage: whenever a crop is harvested, this function will return an item
     //with the same name and a certain selling price
-    virtual std::unique_ptr<Item> harvest() = 0;
+    virtual std::shared_ptr<Item> harvest() = 0;
 
     //returns a smart pointer to crop(base class for wheat, corn, tomatoes) to
     //ensure polymorphic behaviour

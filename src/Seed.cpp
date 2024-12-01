@@ -1,9 +1,9 @@
 #include "../../headers/Seed.h"
 
-Seed::Seed(const std::string& n, const int c, const int price, std::unique_ptr<Crop>& crop)
+Seed::Seed(const std::string& n, const int c, const int price,const std::unique_ptr<Crop>& crop)
     :
     Item(n, c, price),
-    crop(std::move(crop))
+    crop(crop->clone())
 {
 }
 
@@ -11,7 +11,7 @@ int Seed::plant(Field& f, int c)
 {
     int plantedSeeds = 0;
 
-    for (int i = 1; i <= f.getLength(); i++)
+    for (int i = 0; i <= f.getLength(); i++)
     {
         if (c == 0)
             break;

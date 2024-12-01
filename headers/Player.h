@@ -10,7 +10,7 @@ class Player
 {
     std::string playerName;
     int playerMoney;
-    std::vector<std::unique_ptr<Item>> playerInventory;
+    std::vector<std::shared_ptr<Item>> playerInventory;
 
 public:
     //CONSTRUCTORS & DESTRUCTORS
@@ -23,11 +23,12 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Player& player);
 
     //INVENTORY MANAGEMENT
-    void addItem(std::unique_ptr<Item> i);
-    std::vector<std::unique_ptr<Item>>::iterator searchItem(const std::string& s);
+    void addItem(const std::shared_ptr<Item>& i);
+    std::vector<std::shared_ptr<Item>>::iterator searchItem(const std::string& itemName);
     void removeItem(const std::string& s, int q);
     void sellItem(const std::string& s, int q);
     void showInventory() const;
+    [[nodiscard]] int getMoney() const;
 };
 
 

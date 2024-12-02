@@ -6,41 +6,80 @@
 #include "Crop.h"
 #include "FieldExceptions.h"
 
+/**
+ * @class Field
+ * @brief Represents a field containing lots where crops can be planted, grown, and harvested.
+ *
+ * The Field class manages a linear arrangement of lots where each lot can hold a crop.
+ * It provides methods for planting, updating growth, harvesting crops, and querying lot status.
+ */
 class Field
 {
+    /**
+     * @brief A vector of unique pointers to Crop objects, representing the lots in the field.
+     */
     std::vector<std::unique_ptr<Crop>> lots;
 
 public:
-    //For the simplicity of the game, the field in not a matrix,
-    //just a simple line with a few lots
+    /**
+    * @brief Constructs a Field with a specified number of lots.
+    * @param l The number of lots in the field.
+    *
+    * Initializes the field with `l` empty lots.
+    * (Field is meant to represent a "line", not a matrix)
+    */
     explicit Field(int l);
 
-    //function to check if a lot is available or not
+    /**
+     * @brief Checks the status of a specific lot.
+     * @param x The index of the lot to check.
+     * @return 0 if the lot is empty, otherwise 1.
+     */
     [[nodiscard]] int getLotStatus(int x) const;
 
+    /**
+    * @brief Retrieves the number of lots in the field.
+    * @return The length of the field (number of lots).
+    */
     [[nodiscard]] int getLength() const;
 
-    //Function that checks if lot is empty and puts
-    //a crop there (the conversion from seed to crop)
-    //is handled within the seed class
+    /**
+      * @brief Plants a crop in a specified lot.
+      * @param x The index of the lot where the crop will be planted.
+      * @param c A unique pointer to the Crop object to be planted.
+      *
+      * Checks if the specified lot is empty and places the crop in it. The conversion from seed
+      * to crop is handled by the Seed class.
+      */
     void plantCrop(int x, std::unique_ptr<Crop> c);
 
-    //calls the grow() function withing the crop class
+    /**
+      * @brief Updates the growth status of all crops in the field.
+      * @param seconds The current timestamp, used to update growth status.
+      *
+      * Calls the `grow()` function of each Crop object to update its growth status.
+      */
     void updateGrowth(long long seconds);
 
-    //harvests crop (! actually returns an item that gets
-    //transferred later on into the player inventory !) from a certain lot
-    //and resets/null the certain lot pointer
-    //This function works polymorphically!
-    //Both Item and Crop classes are based classes, but they are never handled
+    /**
+    * @brief Harvests a crop from a specific lot.
+    * @param x The index of the lot to harvest from.
+    * @return A shared pointer to an Item object representing the harvested crop.
+    *
+    * Resets the lot to null after harvesting. The function operates polymorphically, returning
+    * an appropriate Item object based on the harvested crop.
+    */
     std::shared_ptr<Item> harvestCrop(int x);
 
-    //this function uses
-    //down casting to "sort" through the planted crops in the field
-    //and harvests the desired crops
-    //as dynamic_cast isn't implemented for unique_ptr's, and we can't
-    //know the type until runtime (if's on typeid's are not recommended)
-    //usage of a template is the best option
+    /**
+     * @brief Harvests the first crop of a specific type from the field.
+     * @tparam T The type of crop to harvest.
+     * @return A shared pointer to an Item object representing the harvested crop.
+     *
+     * Uses dynamic casting to identify crops of type `T`
+     * @throws EmptyLotException if all lots are empty.
+     * @throws CropNotFoundException if no crops of the desired type are found.
+     */
     template <typename T>
     std::shared_ptr<Item> harvestCropLike()
     {

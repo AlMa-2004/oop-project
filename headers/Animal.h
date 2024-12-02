@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 
+//WIP
 class Animal
 {
     std::string animalName;

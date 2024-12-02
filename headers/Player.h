@@ -45,7 +45,7 @@ public:
      * @param name The player's name.
      * @param money The amount of money the player has.
      */
-    explicit Player(std::string name, int money);
+    explicit Player(const std::string& name, int money);
 
     // OPERATOR OVERLOADING
 
@@ -96,6 +96,7 @@ public:
      *
      * The item is removed from the inventory, and the player's money is increased by
      * the total selling price of the sold items.
+     * @throws InventoryException If the item is not found in the inventory.
      */
     void sellItem(const std::string& s, int q);
 

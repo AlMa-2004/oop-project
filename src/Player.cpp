@@ -8,8 +8,8 @@ Player::Player()
 }
 
 // Parameterized constructor: initializes player with given name and money
-Player::Player(std::string name, const int money)
-    : playerName(std::move(name)), playerMoney(money)
+Player::Player(const std::string& name, const int money)
+    : playerName(name), playerMoney(money)
 {
     //std::cout << "Parameterized player constructor\n";
 }
@@ -100,8 +100,11 @@ void Player::sellItem(const std::string& s, const int q)
 {
     auto found = searchItem(s);
     if (found != playerInventory.end())
+    {
         playerMoney += (*found)->calculateSellingPrice(q);
-    removeItem(s, q);
+        removeItem(s, q);
+    }
+    else throw InventoryException();
 }
 
 void Player::showInventory() const

@@ -1,4 +1,4 @@
-#include "../../headers/Menu.h"
+#include "../headers/Menu.h"
 
 //WIP - might be the case to implement a game state manager
 sf::Font Menu::myFont; //static members always have to be initialised outside the class

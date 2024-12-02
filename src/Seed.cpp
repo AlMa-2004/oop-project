@@ -1,4 +1,4 @@
-#include "../../headers/Seed.h"
+#include "../headers/Seed.h"
 
 Seed::Seed(const std::string& n, const int c, const int price,const std::unique_ptr<Crop>& crop)
     :

@@ -1,4 +1,4 @@
-#include "../../headers/Corn.h"
+#include "../headers/Corn.h"
 
 Corn::Corn()
     : Crop("Corn", 5, 0, false)

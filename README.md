@@ -50,7 +50,7 @@ A simple and relaxing farm simulator where players grow crops, feed a few animal
 - [x] STL
 - [x] cât mai multe `const`
 - [?] funcții *de nivel înalt*, de eliminat cât mai mulți getters/setters/funcții low-level
-- [ ] tag de `git`: de exemplu `v0.2`
+- [x] tag de `git`: de exemplu `v0.2`
   
 ## Milestone #3
 

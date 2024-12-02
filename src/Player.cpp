@@ -69,11 +69,12 @@ void Player::addItem(const std::shared_ptr<Item>& i)
 
 std::vector<std::shared_ptr<Item>>::iterator Player::searchItem(const std::string& itemName)
 {
-    const auto& it = std::ranges::find_if(playerInventory.begin(), playerInventory.end(),
-                                          [&itemName](const std::shared_ptr<Item>& item)
-                                          {
-                                              return item->getName() == itemName;
-                                          });
+    const auto& it = std::find_if(playerInventory.begin(), playerInventory.end(),
+    [&itemName](const std::shared_ptr<Item>& item)
+    {
+        return item->getName() == itemName;
+    });
+
     if (it == playerInventory.end())
     {
         throw InventoryException();

@@ -35,7 +35,6 @@ void Field::updateGrowth(const long long seconds)
     }
 }
 
-//inspired from AI-generated content
 std::shared_ptr<Item> Field::harvestCrop(const int x)
 {
     if (lots[x] != nullptr && lots[x]->getGrowthStatus())

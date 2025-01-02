@@ -2,33 +2,42 @@
 #define MENU_H
 #include <SFML/Graphics.hpp>
 #include <iostream>
-//WIP
+#include "State.h"
 
-/**
- * @class Menu
- * @brief Represents the main menu interface for the game.
- *
- * The Menu class handles the display and interaction with the game's main menu options,
- * such as starting the game, viewing the tutorial, or exiting the application.
- */
+
+class Menu : public State
+{
+    static sf::Font font;
+    sf::Text menuOptions[3];
+    int currentSelection = 0;
+
+public:
+    static void loadFont();
+    Menu();
+    void handleInput(sf::Event* event) override;
+    void update(float elapsedTime) override;
+    void draw(sf::RenderWindow* window) override;
+};
+
+/*
 class Menu
 {
-    /**
+
      * @brief The font used for rendering text in the menu.
      *
      * A static `sf::Font` object shared across all instances of the Menu class
      * to maintain consistent text styling.
-     */
+
     static sf::Font myFont;
 
-    /**
+
      * @brief Enum representing the available menu options.
      *
      * The menu options include:
      * - START: Starts the game.
      * - TUTORIAL: Displays the game tutorial.
      * - EXIT: Exits the application.
-     */
+
     enum OPTION
     {
         START, ///< Represents the "Start Game" option.
@@ -37,7 +46,7 @@ class Menu
     };
 
 public:
-    /**
+
      * @brief Displays the main menu and handles user input.
      * @return An integer representing the user's selected menu option.
      *
@@ -45,8 +54,9 @@ public:
      * - 0 for START
      * - 1 for TUTORIAL
      * - 2 for EXIT
-     */
+
     static int showMenu();
 };
 
+*/
 #endif // MENU_H

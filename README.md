@@ -1,7 +1,7 @@
 # Agrarian Affair
 
 ## Descriere proiect
-A simple and relaxing farm simulator where players grow crops, feed a few animals, and sell their harvest to earn coins.
+A simple and relaxing farm simulator where players grow crops and sell their harvest to earn coins.
 
 ## Milestone #0
 
@@ -50,13 +50,13 @@ A simple and relaxing farm simulator where players grow crops, feed a few animal
 - [x] STL
 - [x] cât mai multe `const`
 - [?] funcții *de nivel înalt*, de eliminat cât mai mulți getters/setters/funcții low-level
-- [ ] tag de `git`: de exemplu `v0.2`
+- [x] tag de `git`: de exemplu `v0.2`
   
 ## Milestone #3
 
 #### Cerințe
-- [ ] 2 șabloane de proiectare (design patterns)(1/2)
-- [ ] o clasă șablon cu sens; minim **2 instanțieri**
+- [x] 2 șabloane de proiectare (design patterns)(1/2 - Prototype, State) 
+- [ ] o clasă șablon cu sens; minim **2 instanțieri** (Entity Manager?)
   - [ ] preferabil și o funcție șablon (template) cu sens; minim 2 instanțieri(1/2)
 - [ ] tag de `git`: de exemplu `v0.3` sau `v1.0`
 

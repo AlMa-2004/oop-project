@@ -21,10 +21,13 @@ int main()
     Menu menu;
     sf::Clock clock;
 
-    while (window.isOpen()) {
+    while (window.isOpen())
+    {
         sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+            {
                 window.close();
             }
             menu.handleInput(&event);
@@ -32,7 +35,6 @@ int main()
         menu.update(clock.restart().asSeconds());
         menu.draw(&window);
     }
-
 }
 
 /// OLD GAME LOOP, JUST FOR EXEMPLIFICATION PURPOSES

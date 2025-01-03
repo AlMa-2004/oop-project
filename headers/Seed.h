@@ -36,7 +36,7 @@ public:
      * @param c The quantity of seeds to be planted.
      * @return Returns 0 if at least one seed was planted, or -1 if no lots were available.
      */
-    int plant(Field& f, int c);
+    int plant(Field& f, int c, long long seconds);
 };
 
 #endif // SEED_H

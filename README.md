@@ -65,3 +65,4 @@ A simple and relaxing farm simulator where players grow crops and sell their har
 - https://www.sfml-dev.org/tutorials/2.6/
 - https://www.youtube.com/playlist?list=PL_xRyXins848nDj2v-TJYahzvs-XW9sVV
 - https://www.geeksforgeeks.org/catching-base-and-derived-classes-as-exceptions-in-cpp-and-java/
+- https://medium.com/achiev/game-from-scratch-with-c-and-sfml-3-bbcdde38c3af

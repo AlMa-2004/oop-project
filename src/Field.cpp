@@ -15,8 +15,9 @@ int Field:: getLength() const {
     return lots.size();
 }
 
-void Field::plantCrop(const int x, std::unique_ptr<Crop> c)
+void Field::plantCrop(const int x, std::unique_ptr<Crop> c, long long seconds)
 {
+    c->setTimeStampPlanted(seconds);
     if (lots[x] == nullptr)
     {
         lots[x] = std::move(c);

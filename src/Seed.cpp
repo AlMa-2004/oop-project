@@ -7,7 +7,7 @@ Seed::Seed(const std::string& n, const int c, const int price,const std::unique_
 {
 }
 
-int Seed::plant(Field& f, int c)
+int Seed::plant(Field& f, int c, long long seconds)
 {
     int plantedSeeds = 0;
 
@@ -18,7 +18,7 @@ int Seed::plant(Field& f, int c)
 
         if (f.getLotStatus(i) == 0)
         {
-            f.plantCrop(i, crop->clone());
+            f.plantCrop(i, crop->clone(), seconds);
             plantedSeeds++;
             c--;
         }

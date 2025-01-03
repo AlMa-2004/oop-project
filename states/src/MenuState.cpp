@@ -1,8 +1,11 @@
-#include "../headers/Menu.h"
+#include "../headers/MenuState.h"
+#include "../headers/TutorialState.h"
+#include "../../headers/GameStateManager.h"
+#include <iostream>
 
-sf::Font Menu::font; //static members always have to be initialised outside the class
+sf::Font MenuState::font; //static members always have to be initialised outside the class
 
-void Menu::loadFont()
+void MenuState::loadFont()
 {
     if (!font.loadFromFile("../fonts/ARCADECLASSIC.ttf"))
     {
@@ -10,7 +13,7 @@ void Menu::loadFont()
     }
 }
 
-Menu::Menu()
+MenuState::MenuState()
 {
     try
     {
@@ -34,7 +37,7 @@ Menu::Menu()
     }
 }
 
-void Menu::handleInput(sf::Event* event)
+void MenuState::handleInput(sf::Event* event)
 {
     if (event->type == sf::Event::KeyPressed)
     {
@@ -48,13 +51,14 @@ void Menu::handleInput(sf::Event* event)
         }
         else if (event->key.code == sf::Keyboard::Enter)
         {
-            switch (currentSelection) //temporary, function to be taken over by the game state manager
+            switch (currentSelection)
             {
             case 0:
                 std::cout << "Start" << std::endl;
                 break;
             case 1:
                 std::cout << "Tutorial" << std::endl;
+                GameStateManager::getInstance().pushState(std::make_unique<TutorialState>());
                 break;
             case 2:
                 std::cout << "Exit" << std::endl;
@@ -66,22 +70,22 @@ void Menu::handleInput(sf::Event* event)
     }
 }
 
-void Menu::update(float elapsedTime)
+void MenuState::update( [[maybe_unused]] float elapsedTime)
 {
     for (int i = 0; i < 3; ++i)
     {
         if (i == currentSelection)
         {
-            menuOptions[i].setFillColor(sf::Color::Green); // Highlight the selected option
+            menuOptions[i].setFillColor(sf::Color::Green);
         }
         else
         {
-            menuOptions[i].setFillColor(sf::Color::White); // Reset color for others
+            menuOptions[i].setFillColor(sf::Color::White);
         }
     }
 }
 
-void Menu::draw(sf::RenderWindow* window)
+void MenuState::draw(sf::RenderWindow* window)
 {
     window->clear();
     for (const auto& option : menuOptions)

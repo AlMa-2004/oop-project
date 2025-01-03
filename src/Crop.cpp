@@ -46,3 +46,8 @@ void Crop::grow(const long long seconds)
 
 [[nodiscard]] std::string Crop::getName() const { return cropName; }
 [[nodiscard]] bool Crop::getGrowthStatus() const { return isGrown; }
+
+void Crop::setTimeStampPlanted(const long long seconds)
+{
+    this->timeStampPlanted = seconds;
+}

@@ -124,5 +124,6 @@ public:
      * @return True if the crop is grown, otherwise false.
      */
     [[nodiscard]] bool getGrowthStatus() const;
+     void setTimeStampPlanted(long long seconds);
 };
 #endif //CROP_H

@@ -1,11 +1,9 @@
-#ifndef MENU_H
-#define MENU_H
+#ifndef MENUSTATE_H
+#define MENUSTATE_H
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include "State.h"
 
-
-class Menu : public State
+class MenuState : public State
 {
     static sf::Font font;
     sf::Text menuOptions[3];
@@ -13,10 +11,10 @@ class Menu : public State
 
 public:
     static void loadFont();
-    Menu();
+    MenuState();
     void handleInput(sf::Event* event) override;
-    void update(float elapsedTime) override;
+    void update([[maybe_unused]] float elapsedTime) override;
     void draw(sf::RenderWindow* window) override;
 };
 
-#endif // MENU_H
+#endif // MENUSTATE_H

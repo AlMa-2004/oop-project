@@ -58,8 +58,6 @@ add_executable(${PROJECT_NAME}
         src/Crop.cpp
         headers/Item.h
         src/Item.cpp
-        headers/Menu.h
-        src/Menu.cpp
         headers/Seed.h
         src/Seed.cpp
         headers/Field.h
@@ -74,8 +72,16 @@ add_executable(${PROJECT_NAME}
         headers/InventoryExceptions.h
         headers/GameStateManager.h
         src/GameStateManager.cpp
-        headers/State.h
-        src/State.cpp
+        states/headers/State.h
+        states/src/State.cpp
+        headers/Game.h
+        src/Game.cpp
+        states/headers/MenuState.h
+        states/src/MenuState.cpp
+        states/headers/SplashScreenState.h
+        states/src/SplashScreenState.cpp
+        states/headers/TutorialState.h
+        states/src/TutorialState.cpp
 
 
 )

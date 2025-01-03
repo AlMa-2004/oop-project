@@ -1,40 +1,8 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <iostream>
-#include <memory>
-#include <thread>
-#include "headers/Player.h"
-#include "headers/Field.h"
-#include "headers/Seed.h"
-#include "headers/Tomato.h"
-#include "headers/Wheat.h"
-#include "headers/Corn.h"
-#include "headers/Menu.h"
-#include "headers/FieldExceptions.h"
-#include "headers/InventoryExceptions.h"
+#include "headers/Game.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Menu");
-    window.setFramerateLimit(60);
-
-    Menu menu;
-    sf::Clock clock;
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-            {
-                window.close();
-            }
-            menu.handleInput(&event);
-        }
-        menu.update(clock.restart().asSeconds());
-        menu.draw(&window);
-    }
+    Game::start();
 }
 
 /// OLD GAME LOOP, JUST FOR EXEMPLIFICATION PURPOSES

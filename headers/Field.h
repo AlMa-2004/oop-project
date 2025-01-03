@@ -47,11 +47,12 @@ public:
       * @brief Plants a crop in a specified lot.
       * @param x The index of the lot where the crop will be planted.
       * @param c A unique pointer to the Crop object to be planted.
+      * @param seconds Takes a timestamp of the elapsed time.
       *
       * Checks if the specified lot is empty and places the crop in it. The conversion from seed
       * to crop is handled by the Seed class.
       */
-    void plantCrop(int x, std::unique_ptr<Crop> c);
+    void plantCrop(int x, std::unique_ptr<Crop> c, long long seconds);
 
     /**
       * @brief Updates the growth status of all crops in the field.
@@ -70,7 +71,6 @@ public:
     * an appropriate Item object based on the harvested crop.
     */
     std::shared_ptr<Item> harvestCrop(int x);
-
     /**
      * @brief Harvests the first crop of a specific type from the field.
      * @tparam T The type of crop to harvest.

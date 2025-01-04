@@ -55,9 +55,9 @@ A simple and relaxing farm simulator where players grow crops and sell their har
 ## Milestone #3
 
 #### Cerințe
-- [x] 2 șabloane de proiectare (design patterns)(1/2 - Prototype, State) 
-- [ ] o clasă șablon cu sens; minim **2 instanțieri** (Entity Manager?)
-  - [ ] preferabil și o funcție șablon (template) cu sens; minim 2 instanțieri(1/2)
+- [x] 2 șabloane de proiectare (design patterns)(1/2 - Prototype, State - WIP) 
+- [x] o clasă șablon cu sens; minim **2 instanțieri**
+  - [x] preferabil și o funcție șablon (template) cu sens; minim 2 instanțieri
 - [ ] tag de `git`: de exemplu `v0.3` sau `v1.0`
 
 ## Resurse

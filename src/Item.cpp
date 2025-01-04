@@ -1,6 +1,12 @@
 #include "../headers/Item.h"
 
-Item::Item(std::string n, const int c = 1, const int price = 10)
+Item::Item(): itemName("UnknownItem"),
+              itemQuantity(0),
+              itemSellingPrice(10)
+{
+};
+
+Item::Item(std::string n, const int c = 0, const int price = 10)
     : itemName(std::move(n)),
       itemQuantity(c),
       itemSellingPrice(price)

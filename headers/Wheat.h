@@ -42,8 +42,8 @@ public:
      * @brief Harvests the Wheat crop and produces a corresponding Item object.
      * @return A shared pointer to an Item object representing the harvested wheat.
      *
-     * This method is called when the wheat is ready for harvest. It creates an Item
-     * with the name "Wheat" and a predefined selling price.
+     * This method is called when the wheat is ready for harvest. It creates a Harvest Item
+     * with the name "Wheat Bundle" and a predefined attributes.
      */
     [[nodiscard]] std::shared_ptr<Item> harvest() override;
 };

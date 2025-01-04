@@ -1,4 +1,5 @@
 #include "../headers/Tomato.h"
+#include "../headers/Harvest.h"
 
 Tomato::Tomato()
     : Crop("Tomato", 2, 0, false)
@@ -18,5 +19,5 @@ Tomato::Tomato(int growthTime, long long plantedTimestamp)
 [[nodiscard]] std::shared_ptr<Item> Tomato::harvest()
 {
     std::cout << "Harvesting tomatoes!\n";
-    return std::make_shared<Item>("Tomato Crate", 20, 10);
+    return std::make_shared<Harvest>("Tomato Crate", 20, 10, true);
 }

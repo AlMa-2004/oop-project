@@ -1,5 +1,6 @@
+#include <utility>
+
 #include "../headers/Player.h"
-#include "../headers/InventoryExceptions.h"
 
 Player::Player()
     : playerName("Player"), playerMoney(0)
@@ -8,40 +9,12 @@ Player::Player()
 }
 
 // Parameterized constructor: initializes player with given name and money
-Player::Player(const std::string& name, const int money)
-    : playerName(name), playerMoney(money)
+Player::Player(std::string  name, const int money)
+    : playerName(std::move(name)), playerMoney(money)
 {
-    //std::cout << "Parameterized player constructor\n";
+
 }
 
-/*
-Player::Player(const Player& p)
-    : playerName(p.playerName), playerMoney(p.playerMoney)
-{
-    std::cout << "Copy player constructor\n";
-    for (const auto& item : p.playerInventory)
-    {
-        playerInventory.push_back(std::make_unique<Item>(*item));
-    }
-}
-*/
-
-//OPERATOR OVERLOADING
-/*
-Player& Player::operator=(const Player& p)
-{
-    playerName = p.playerName;
-    playerMoney = p.playerMoney;
-    playerInventory.clear();
-
-    for (const auto& item : p.playerInventory)
-    {
-        playerInventory.push_back(std::make_unique<Item>(*item));
-    }
-    std::cout << "Player assignment\n";
-    return *this;
-}
-*/
 std::ostream& operator<<(std::ostream& os, const Player& player)
 {
     os << "PlayerName: " << player.playerName
@@ -52,63 +25,47 @@ std::ostream& operator<<(std::ostream& os, const Player& player)
     return os;
 }
 
-void Player::addItem(const std::shared_ptr<Item>& i)
+void Player::addSeed(const std::shared_ptr<Seed>& seed)
 {
-    for (auto& item : playerInventory)
-    {
-        if (item->getName() == i->getName())
-        {
-            item->setQuantity(item->getQuantity() + i->getQuantity());
-            return;
-        }
-    }
-    playerInventory.push_back(i);
-    std::cout << "Added item: " << i->getName() << " succesfully!\n";
+    seedInventory.addItem(seed);
+}
+
+void Player::addHarvest(const std::shared_ptr<Harvest>& harvest)
+{
+    harvestInventory.addItem(harvest);
 }
 
 
-std::vector<std::shared_ptr<Item>>::iterator Player::searchItem(const std::string& itemName)
+void Player::removeSeed(const std::string& seedName, int quantity)
 {
-    const auto& it = std::find_if(playerInventory.begin(), playerInventory.end(),
-    [&itemName](const std::shared_ptr<Item>& item)
-    {
-        return item->getName() == itemName;
-    });
+    seedInventory.removeItem(seedName, quantity);
+}
 
-    if (it == playerInventory.end())
-    {
-        throw InventoryException();
-    }
-    return it;
+void Player::removeHarvest(const std::string& harvestName, int quantity)
+{
+    harvestInventory.removeItem(harvestName, quantity);
 }
 
 
-void Player::removeItem(const std::string& s, const int q)
+void Player::sellSeed(const std::string& seedName, int quantity)
 {
-    auto found = searchItem(s);
-    if (found != playerInventory.end())
-    {
-        if (q == (*found)->getQuantity())
-            playerInventory.erase(found);
-        else
-            (*found)->setQuantity((*found)->getQuantity() - q);
-    }
+    seedInventory.sellItem(seedName, quantity, playerMoney);
+}
+
+void Player::sellHarvest(const std::string& harvestName, int quantity)
+{
+    harvestInventory.sellItem(harvestName, quantity, playerMoney);
 }
 
 
-void Player::sellItem(const std::string& s, const int q)
+void Player::showSeedInventory() const
 {
-    auto found = searchItem(s);
-    if (found != playerInventory.end())
-    {
-        playerMoney += (*found)->calculateSellingPrice(q);
-        removeItem(s, q);
-    }
-    else throw InventoryException();
+    std::cout << "Seed Inventory:\n";
+    seedInventory.showInventory();
 }
 
-void Player::showInventory() const
+void Player::showHarvestInventory() const
 {
-    for (const auto& item : playerInventory)
-        std::cout << *item << " ";
+    std::cout << "Harvest Inventory:\n";
+    harvestInventory.showInventory();
 }

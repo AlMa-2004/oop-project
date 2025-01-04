@@ -1,5 +1,5 @@
 #include "../headers/Wheat.h"
-
+#include "../headers/Harvest.h"
 
 Wheat::Wheat()
     : Crop("Wheat", 10, 0, false)
@@ -19,5 +19,5 @@ Wheat::Wheat(int growthTime, long long plantedTimestamp)
 [[nodiscard]] std::shared_ptr<Item> Wheat::harvest()
 {
     std::cout << "Harvesting wheat\n";
-    return std::make_shared<Item>("Wheat Bundle", 10, 5);
+    return std::make_shared<Harvest>("Wheat Bundle", 10, 5, false);
 }

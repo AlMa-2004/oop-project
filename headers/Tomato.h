@@ -3,6 +3,7 @@
 #include "Item.h"
 #include "Crop.h"
 
+
 /**
  * @class Tomato
  * @brief Represents a specific type of crop, the Tomato, derived from the Crop base class.
@@ -41,8 +42,8 @@ public:
      * @brief Harvests the Tomato crop and produces a corresponding Item object.
      * @return A shared pointer to an Item object representing the harvested tomato.
      *
-     * This method is called when the tomato is ready for harvest. It creates an Item
-     * with the name "Tomato" and a predefined selling price.
+     * This method is called when the tomato is ready for harvest. It creates a Harvest Item
+     * with the name "Tomato Crate" and a predefined attributes.
      */
     [[nodiscard]] std::shared_ptr<Item> harvest() override;
 };

@@ -29,6 +29,7 @@ class Item
     int itemSellingPrice;
 
 public:
+     Item();
     /**
      * @brief Constructs an Item with specified attributes.
      * @param n The name of the item.

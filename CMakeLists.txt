@@ -82,6 +82,12 @@ add_executable(${PROJECT_NAME}
         states/src/SplashScreenState.cpp
         states/headers/TutorialState.h
         states/src/TutorialState.cpp
+        states/headers/PlayingState.h
+        states/src/PlayingState.cpp
+        headers/Harvest.h
+        src/Harvest.cpp
+        headers/Inventory.h
+        src/Inventory.cpp
 
 
 )

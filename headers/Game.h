@@ -1,33 +1,43 @@
 #ifndef GAME_H
 #define GAME_H
 #include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <iostream>
-#include <memory>
-#include <thread>
-#include "Player.h"
-#include "Field.h"
-#include "Seed.h"
-#include "Tomato.h"
-#include "Wheat.h"
-#include "Corn.h"
-#include "../states/headers/MenuState.h"
-#include "../states/headers/State.h"
-#include "FieldExceptions.h"
-#include "InventoryExceptions.h"
 
-//class that hosts the internal clock, rendered window and main game loop
+/**
+ * @class Game
+ * @brief Hosts the internal clock, rendered window, and main game loop.
+ */
 class Game
 {
 private:
+    /**
+     * @brief The main game rendering window.
+     */
     static sf::RenderWindow gameWindow;
+
+    /**
+     * @brief The game clock used to track elapsed time.
+     */
     static sf::Clock gameClock;
 
 public:
-    const static int WIDTH = 800;
-    const static int HEIGHT = 600;
+    /**
+     * @brief The width of the game window in pixels.
+     */
+    static constexpr int WIDTH = 800;
 
+    /**
+     * @brief The height of the game window in pixels.
+     */
+    static constexpr int HEIGHT = 600;
+
+    /**
+     * @brief Initializes the game, sets up the window, and starts the game loop.
+     */
     static void start();
+
+    /**
+     * @brief The main game loop, handling events, updates, and rendering.
+     */
     static void gameLoop();
 };
 

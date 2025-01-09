@@ -58,13 +58,13 @@ public:
     // inventory related methods
     void addSeed(const std::shared_ptr<Seed>& seed);
     void addHarvest(const std::shared_ptr<Harvest>& harvest);
-    void removeSeed(const std::string& seedName, int quantity);
-    void removeHarvest(const std::string& harvestName, int quantity);
+    //void removeSeed(const std::string& seedName, int quantity);
+    //void removeHarvest(const std::string& harvestName, int quantity);
     void sellSeed(const std::string& seedName, int quantity);
     void sellHarvest(const std::string& harvestName, int quantity);
     [[nodiscard]] std::shared_ptr<Seed> getSeedByIndex(int index) const;
     [[nodiscard]] std::shared_ptr<Harvest> getHarvestByIndex(int index) const;
-    void showSeedInventory() const;
-    void showHarvestInventory() const;
+    //void showSeedInventory() const;
+    //void showHarvestInventory() const;
 };
 #endif // PLAYER_H

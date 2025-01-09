@@ -34,18 +34,6 @@ void Player::addHarvest(const std::shared_ptr<Harvest>& harvest)
     harvestInventory.addItem(harvest);
 }
 
-
-void Player::removeSeed(const std::string& seedName, int quantity)
-{
-    seedInventory.removeItem(seedName, quantity);
-}
-
-void Player::removeHarvest(const std::string& harvestName, int quantity)
-{
-    harvestInventory.removeItem(harvestName, quantity);
-}
-
-
 void Player::sellSeed(const std::string& seedName, int quantity)
 {
     seedInventory.sellItem(seedName, quantity, playerMoney);
@@ -82,6 +70,7 @@ std::shared_ptr<Harvest> Player::getHarvestByIndex(const int index) const
     }
 }
 
+/*
 void Player::showSeedInventory() const
 {
     std::cout << "Seed Inventory:\n";
@@ -93,3 +82,17 @@ void Player::showHarvestInventory() const
     std::cout << "Harvest Inventory:\n";
     harvestInventory.showInventory();
 }
+
+void Player::removeSeed(const std::string& seedName, int quantity)
+{
+    seedInventory.removeItem(seedName, quantity);
+}
+
+void Player::removeHarvest(const std::string& harvestName, int quantity)
+{
+    harvestInventory.removeItem(harvestName, quantity);
+}
+
+
+
+*/

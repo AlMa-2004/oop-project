@@ -39,6 +39,10 @@ public:
      */
     int plant(Field& f, int c, long long seconds);
 
+    /**
+     * @brief Retrieves a unique pointer to the Crop object associated with this seed.
+     * @return A unique pointer to the Crop object.
+     */
     [[nodiscard]] std::unique_ptr<Crop> getCrop() const;
 };
 

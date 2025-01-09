@@ -22,12 +22,12 @@ class Field
 
 public:
     /**
-    * @brief Constructs a Field with a specified number of lots.
-    * @param l The number of lots in the field.
-    *
-    * Initializes the field with `l` empty lots.
-    * (Field is meant to represent a "line", not a matrix)
-    */
+     * @brief Constructs a Field with a specified number of lots.
+     * @param l The number of lots in the field.
+     *
+     * Initializes the field with `l` empty lots.
+     * (Field is meant to represent a "line", not a matrix)
+     */
     explicit Field(int l);
 
     /**
@@ -38,50 +38,49 @@ public:
     [[nodiscard]] int getLotStatus(int x) const;
 
     /**
-    * @brief Retrieves the number of lots in the field.
-    * @return The length of the field (number of lots).
-    */
+     * @brief Retrieves the number of lots in the field.
+     * @return The length of the field (number of lots).
+     */
     [[nodiscard]] int getLength() const;
 
     /**
-      * @brief Plants a crop in a specified lot.
-      * @param x The index of the lot where the crop will be planted.
-      * @param c A unique pointer to the Crop object to be planted.
-      * @param seconds Takes a timestamp of the elapsed time.
-      *
-      * Checks if the specified lot is empty and places the crop in it. The conversion from seed
-      * to crop is handled by the Seed class.
-      */
+     * @brief Plants a crop in a specified lot.
+     * @param x The index of the lot where the crop will be planted.
+     * @param c A unique pointer to the Crop object to be planted.
+     * @param seconds Takes a timestamp of the elapsed time.
+     *
+     * Checks if the specified lot is empty and places the crop in it. The conversion from seed
+     * to crop is handled by the Seed class.
+     */
     void plantCrop(int x, std::unique_ptr<Crop> c, long long seconds);
 
     /**
-      * @brief Updates the growth status of all crops in the field.
-      * @param seconds The current timestamp, used to update growth status.
-      *
-      * Calls the `grow()` function of each Crop object to update its growth status.
-      */
+     * @brief Updates the growth status of all crops in the field.
+     * @param seconds The current timestamp, used to update growth status.
+     *
+     * Calls the `grow()` function of each Crop object to update its growth status.
+     */
     void updateGrowth(long long seconds);
 
     /**
-    * @brief Harvests a crop from a specific lot.
-    * @param x The index of the lot to harvest from.
-    * @return A shared pointer to an Item object representing the harvested crop.
-    *
-    * Resets the lot to null after harvesting. The function operates polymorphically, returning
-    * an appropriate Item object based on the harvested crop.
-    */
+     * @brief Harvests a crop from a specific lot.
+     * @param x The index of the lot to harvest from.
+     * @return A shared pointer to an Item object representing the harvested crop.
+     *
+     * Resets the lot to null after harvesting. The function operates polymorphically, returning
+     * an appropriate Item object based on the harvested crop.
+     */
     std::shared_ptr<Item> harvestCrop(int x);
+
     /**
      * @brief Harvests the first crop of a specific type from the field.
      * @tparam T The type of crop to harvest.
      * @return A shared pointer to an Item object representing the harvested crop.
      *
-     * Uses dynamic casting to identify crops of type `T`
+     * Uses dynamic casting to identify crops of type `T`.
      * @throws EmptyLotException if all lots are empty.
      * @throws CropNotFoundException if no crops of the desired type are found.
      */
-    [[nodiscard]] std::unique_ptr<Crop> getCrop(int lotIndex);
-
     template <typename T>
     std::shared_ptr<Item> harvestCropLike()
     {
@@ -105,5 +104,13 @@ public:
         else
             throw CropNotFoundException();
     }
+
+    /**
+     * @brief Retrieves the crop planted in a specific lot.
+     * @param lotIndex The index of the lot.
+     * @return A unique pointer to the Crop object in the lot, or nullptr if the lot is empty.
+     */
+    [[nodiscard]] std::unique_ptr<Crop> getCrop(int lotIndex);
 };
+
 #endif //FIELD_H

@@ -1,6 +1,7 @@
 #include "../headers/Game.h"
 #include "../headers/GameStateManager.h"
 #include "../states/headers/SplashScreenState.h"
+#include <iostream>
 
 sf::RenderWindow Game::gameWindow;
 sf::Clock Game::gameClock;
@@ -18,6 +19,7 @@ void Game::start()
     {
         std::cerr << e.what() << std::endl;
     }
+
 }
 
 
@@ -25,7 +27,7 @@ void Game::gameLoop()
 {
     while (gameWindow.isOpen())
     {
-        sf::Event event;
+        sf::Event event{};
         float elapsedTime = gameClock.restart().asSeconds();
 
         while (gameWindow.pollEvent(event))

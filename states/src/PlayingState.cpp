@@ -133,6 +133,7 @@ void PlayingState::handleInput(sf::Event* event)
                     auto harvestedItem = field.harvestCropLike<Tomato>();
                     player.addHarvest( std::dynamic_pointer_cast<Harvest>(harvestedItem));
                     std::cout << "Harvested Tomato!\n";
+
                 }
                 catch (const EmptyLotException&)
                 {
@@ -226,15 +227,17 @@ void PlayingState::draw(sf::RenderWindow* window)
         {
             sf::Sprite cropSprite;
 
-            if ([[maybe_unused]] auto* crop = dynamic_cast<Tomato*>(field.getCrop(i).get()))
+            auto cropPtr = field.getCrop(i);
+            
+            if (dynamic_cast<Tomato*>(cropPtr.get()))
             {
                 cropSprite.setTexture(tomatoTexture);
             }
-            else if ([[maybe_unused]] auto* crop1 = dynamic_cast<Wheat*>(field.getCrop(i).get()))
+            else if (dynamic_cast<Wheat*>(cropPtr.get()))
             {
                 cropSprite.setTexture(wheatTexture);
             }
-            else if ([[maybe_unused]] auto* crop2 = dynamic_cast<Corn*>(field.getCrop(i).get()))
+            else if (dynamic_cast<Corn*>(cropPtr.get()))
             {
                 cropSprite.setTexture(cornTexture);
             }
@@ -242,6 +245,8 @@ void PlayingState::draw(sf::RenderWindow* window)
             cropSprite.setPosition(lots[i].getPosition());
             window->draw(cropSprite);
         }
+
+
     }
     window->display();
 }

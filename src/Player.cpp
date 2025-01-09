@@ -31,6 +31,7 @@ void Player::addSeed(const std::shared_ptr<Seed>& seed)
 
 void Player::addHarvest(const std::shared_ptr<Harvest>& harvest)
 {
+    harvest->setIsEdibleRaw(false);
     harvestInventory.addItem(harvest);
 }
 

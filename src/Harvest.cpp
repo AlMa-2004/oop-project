@@ -10,3 +10,12 @@ Harvest::Harvest(std::string n, const int c, const int price, const bool& e)
     : Item(std::move(n), c, price), isEdibleRaw(e)
 {
 }
+
+void Harvest::setIsEdibleRaw(const bool& e)
+{
+    this->isEdibleRaw = e;
+}
+bool Harvest::getIsEdibleRaw() const
+{
+    return this->isEdibleRaw;
+}

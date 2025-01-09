@@ -32,8 +32,10 @@ public:
      * @param price The price per unit of the harvest item (default is 10).
      * @param e A boolean value indicating if the item is edible raw (default is false).
      */
-    Harvest(std::string n, int c = 0, int price = 10, const bool& e = false);
+    explicit Harvest(std::string n, int c = 0, int price = 10, const bool& e = false);
 
+    [[nodiscard]] bool getIsEdibleRaw() const;
+    void setIsEdibleRaw(const bool& e);
 };
 
 #endif //HARVEST_H

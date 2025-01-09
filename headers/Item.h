@@ -48,7 +48,7 @@ public:
      *
      * @return The item's name as a string.
      */
-    [[nodiscard]] std::string getName() const;
+    [[nodiscard]]const std::string& getName() const;
 
     /**
      * @brief Retrieves the quantity of the item.

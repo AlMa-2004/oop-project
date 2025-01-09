@@ -14,7 +14,7 @@ Item::Item(std::string n, const int c, const int price)
     //std::cout << "Item constructor\n";
 }
 
-[[nodiscard]] std::string Item::getName() const { return itemName; }
+[[nodiscard]]const std::string& Item::getName() const { return itemName; }
 
 [[nodiscard]] int Item::getQuantity() const { return itemQuantity; }
 

@@ -15,7 +15,4 @@ void Harvest::setIsEdibleRaw(const bool& e)
 {
     this->isEdibleRaw = e;
 }
-bool Harvest::getIsEdibleRaw() const
-{
-    return this->isEdibleRaw;
-}
+

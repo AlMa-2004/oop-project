@@ -74,13 +74,6 @@ public:
     Crop(const Crop& other) = default;
 
     /**
-    * @brief Assignment operator for the Crop class.
-    * @param other The Crop object to assign from.
-    * @return A reference to the assigned Crop object.
-    */
-    Crop& operator=(const Crop& other);
-
-    /**
     * @brief Output stream operator for the Crop class.
     * @param os The output stream.
     * @param obj The Crop object to stream.
@@ -92,7 +85,7 @@ public:
     * @brief Retrieves the name of the crop.
     * @return The crop's name as a string.
     */
-    [[nodiscard]] std::string getName() const;
+    [[nodiscard]]const std::string& getName() const;
 
     /**
     * @brief Harvests the crop and returns an item.

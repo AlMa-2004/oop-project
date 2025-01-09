@@ -34,7 +34,6 @@ public:
      */
     explicit Harvest(std::string n, int c = 0, int price = 10, const bool& e = false);
 
-    [[nodiscard]] bool getIsEdibleRaw() const;
     void setIsEdibleRaw(const bool& e);
 };
 

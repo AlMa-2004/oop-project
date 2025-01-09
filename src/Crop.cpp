@@ -16,14 +16,6 @@ Crop::Crop(std::string name, const int growth_time = 1, const long long time_sta
 {
 }
 
-Crop& Crop::operator=(const Crop& other)
-{
-    cropName = other.cropName;
-    cropGrowthTime = other.cropGrowthTime;
-    isGrown = other.isGrown;
-    return *this;
-}
-
 std::ostream& operator<<(std::ostream& os, const Crop& obj)
 {
     os << "cropName: " << obj.cropName
@@ -44,7 +36,7 @@ void Crop::grow(const long long seconds)
     //else std::cout << "The crop " << cropName << " is still growing!\n";
 }
 
-[[nodiscard]] std::string Crop::getName() const { return cropName; }
+[[nodiscard]] const std::string& Crop::getName() const { return cropName; }
 [[nodiscard]] bool Crop::getGrowthStatus() const { return isGrown; }
 
 void Crop::setTimeStampPlanted(const long long seconds)

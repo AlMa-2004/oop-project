@@ -12,7 +12,7 @@
 class InventoryException : public std::exception
 {
     public:
-    [[nodiscard]]const char* what() const throw() override
+    [[nodiscard]]const char* what() const noexcept override
     {
         return "Item not found in inventory!";
     }

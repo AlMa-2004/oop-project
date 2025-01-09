@@ -12,7 +12,7 @@
 class HarvestException : public std::exception
 {
 public:
-    [[nodiscard]] const char* what() const throw()
+    [[nodiscard]] const char* what() const noexcept override
     {
         return "Harvest exception occurred";
     }
@@ -29,7 +29,7 @@ public:
 class EmptyLotException : public HarvestException
 {
 public:
-    [[nodiscard]] const char* what() const throw()
+    [[nodiscard]] const char* what() const noexcept override
     {
         return "Attempted to harvest from an empty lot";
     }
@@ -45,7 +45,7 @@ public:
 class CropNotFoundException : public HarvestException
 {
 public:
-    [[nodiscard]] const char* what() const throw()
+    [[nodiscard]] const char* what() const noexcept override
     {
         return "Harvest crop-criteria doesn't exist in the field";
     }

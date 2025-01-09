@@ -186,7 +186,7 @@ void PlayingState::handleInput(sf::Event* event)
 }
 
 
-void PlayingState::update(float elapsedTime)
+void PlayingState::update([[maybe_unused]] float elapsedTime)
 {
     field.updateGrowth(static_cast<long long>(gameClock.getElapsedTime().asSeconds()));
 
@@ -208,7 +208,7 @@ void PlayingState::update(float elapsedTime)
 void PlayingState::draw(sf::RenderWindow* window)
 {
     window->clear();
-    for (int i = 0; i < lots.size(); ++i)
+    for (int i = 0; static_cast<size_t>(i) < lots.size(); ++i)
     {
         if (i == currentLot)
         {

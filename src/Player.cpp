@@ -34,11 +34,6 @@ void Player::addHarvest(const std::shared_ptr<Harvest>& harvest)
     harvestInventory.addItem(harvest);
 }
 
-void Player::sellSeed(const std::string& seedName, int quantity)
-{
-    seedInventory.sellItem(seedName, quantity, playerMoney);
-}
-
 void Player::sellHarvest(const std::string& harvestName, int quantity)
 {
     harvestInventory.sellItem(harvestName, quantity, playerMoney);

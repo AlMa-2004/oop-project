@@ -122,12 +122,13 @@ public:
      */
     std::shared_ptr<T> getItem(int index) const
     {
-        if (index >= 0 && index < items.size())
+        if (index >= 0 && static_cast<size_t>(index) < items.size())
         {
             return items[index];
         }
         throw InventoryException();
     }
+
 
     /*
     void showInventory() const

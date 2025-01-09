@@ -71,13 +71,6 @@ public:
     void addHarvest(const std::shared_ptr<Harvest>& harvest);
 
     /**
-     * @brief Sells a specified quantity of a given seed.
-     * @param seedName The name of the seed to be sold.
-     * @param quantity The quantity of the seed to be sold.
-     */
-    void sellSeed(const std::string& seedName, int quantity);
-
-    /**
      * @brief Sells a specified quantity of a harvested crop.
      * @param harvestName The name of the harvested crop to be sold.
      * @param quantity The quantity of the harvested crop to be sold.

@@ -34,17 +34,6 @@ public:
      */
     Harvest(std::string n, int c = 0, int price = 10, const bool& e = false);
 
-    /**
-     * @brief Sets whether the harvested item is edible when raw.
-     * @param e A boolean value indicating if the item is edible raw.
-     */
-    void setEdibleRaw(const bool& e);
-
-    /**
-     * @brief Retrieves whether the harvested item is edible when raw.
-     * @return A boolean value indicating if the item is edible raw.
-     */
-    [[nodiscard]] bool getEdibleRaw() const;
 };
 
 #endif //HARVEST_H

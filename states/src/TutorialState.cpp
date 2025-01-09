@@ -9,7 +9,6 @@ TutorialState::TutorialState()
         throw std::runtime_error("Couldn't to load font!");
     }
 
-    // Set up the tutorial text
     tutorialText.setFont(font);
     tutorialText.setString(
         "Tutorial\n\n"
@@ -17,7 +16,7 @@ TutorialState::TutorialState()
         "Once a lot is highlighted you can to interact with it\n\n"
         "If the lot is empty pressing F1 or F2 or F3 will \n plant the corresponding seed from your inventory\n\n"
         "If the lot has a grown crop pressing Enter will harvest the crop\n\n"
-        "Pressing H will enable you to harvest only crops of\n a given type\n\n"
+        "Pressing H1/2/3 will enable you to harvest only crops of\n a given type\n\n"
         "Pressing one of the numbers 1 through 6 will open a \n prompt for selling the item requiring the quantity\n\n"
         "Press 'Esc' to return to the menu");
     tutorialText.setCharacterSize(30);

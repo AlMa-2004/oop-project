@@ -57,6 +57,7 @@ std::shared_ptr<Seed> Player::getSeedByIndex(const int index) const
     }
 }
 
+/*
 std::shared_ptr<Harvest> Player::getHarvestByIndex(const int index) const
 {
     try
@@ -70,7 +71,6 @@ std::shared_ptr<Harvest> Player::getHarvestByIndex(const int index) const
     }
 }
 
-/*
 void Player::showSeedInventory() const
 {
     std::cout << "Seed Inventory:\n";

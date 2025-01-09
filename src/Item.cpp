@@ -6,7 +6,7 @@ Item::Item(): itemName("UnknownItem"),
 {
 };
 
-Item::Item(std::string n, const int c = 0, const int price = 10)
+Item::Item(std::string n, const int c, const int price)
     : itemName(std::move(n)),
       itemQuantity(c),
       itemSellingPrice(price)

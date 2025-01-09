@@ -5,6 +5,7 @@
 #include "Inventory.h"
 #include "Seed.h"
 #include "Harvest.h"
+
 /**
  * @class Player
  * @brief Represents the player in the game, handling inventory, money, and actions related to items.
@@ -24,9 +25,9 @@ class Player
      */
     int playerMoney;
 
-    //specialised inventories
-    Inventory<Seed> seedInventory;
-    Inventory<Harvest> harvestInventory;
+    // Specialized inventories for seeds and harvests
+    Inventory<Seed> seedInventory; /**< Inventory for storing seeds. */
+    Inventory<Harvest> harvestInventory; /**< Inventory for storing harvested crops. */
 
 public:
     // CONSTRUCTORS & DESTRUCTORS
@@ -55,16 +56,40 @@ public:
      * Displays the player's name, money, and inventory.
      */
     friend std::ostream& operator<<(std::ostream& os, const Player& player);
-    // inventory related methods
+
+    // Inventory related methods
+    /**
+     * @brief Adds a seed to the player's seed inventory.
+     * @param seed The seed object to be added.
+     */
     void addSeed(const std::shared_ptr<Seed>& seed);
+
+    /**
+     * @brief Adds a harvested crop to the player's harvest inventory.
+     * @param harvest The harvested crop to be added.
+     */
     void addHarvest(const std::shared_ptr<Harvest>& harvest);
-    //void removeSeed(const std::string& seedName, int quantity);
-    //void removeHarvest(const std::string& harvestName, int quantity);
+
+    /**
+     * @brief Sells a specified quantity of a given seed.
+     * @param seedName The name of the seed to be sold.
+     * @param quantity The quantity of the seed to be sold.
+     */
     void sellSeed(const std::string& seedName, int quantity);
+
+    /**
+     * @brief Sells a specified quantity of a harvested crop.
+     * @param harvestName The name of the harvested crop to be sold.
+     * @param quantity The quantity of the harvested crop to be sold.
+     */
     void sellHarvest(const std::string& harvestName, int quantity);
+
+    /**
+     * @brief Gets a seed from the inventory by its index.
+     * @param index The index of the seed in the inventory.
+     * @return A shared pointer to the seed.
+     */
     [[nodiscard]] std::shared_ptr<Seed> getSeedByIndex(int index) const;
-    [[nodiscard]] std::shared_ptr<Harvest> getHarvestByIndex(int index) const;
-    //void showSeedInventory() const;
-    //void showHarvestInventory() const;
 };
+
 #endif // PLAYER_H

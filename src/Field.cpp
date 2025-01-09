@@ -11,7 +11,9 @@ int Field::getLotStatus(const int x) const
         return 0;
     return 1;
 }
-int Field:: getLength() const {
+
+int Field::getLength() const
+{
     return lots.size();
 }
 
@@ -45,4 +47,13 @@ std::shared_ptr<Item> Field::harvestCrop(const int x)
         return harvested;
     }
     throw EmptyLotException();
+}
+
+std::unique_ptr<Crop> Field::getCrop(int lotIndex)
+{
+    if (lots[lotIndex] != nullptr)
+    {
+        return std::move(lots[lotIndex]);//due to the pointer's nature, it has to be moved since multiple ownership is restricted
+    }
+    return nullptr; // If no crop is planted, return nullptr
 }

@@ -29,7 +29,7 @@ class Item
     int itemSellingPrice;
 
 public:
-     Item();
+    Item();
     /**
      * @brief Constructs an Item with specified attributes.
      * @param n The name of the item.
@@ -74,5 +74,7 @@ public:
      * Displays the item's details, including name, quantity, and selling price.
      */
     friend std::ostream& operator<<(std::ostream& os, const Item& obj);
+    virtual ~Item()=default;
+
 };
 #endif //ITEM_H

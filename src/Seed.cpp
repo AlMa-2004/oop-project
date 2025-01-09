@@ -7,25 +7,16 @@ Seed::Seed(const std::string& n, const int c, const int price,const std::unique_
 {
 }
 
-int Seed::plant(Field& f, int c, long long seconds)
-{
-    int plantedSeeds = 0;
+std::unique_ptr<Crop> Seed::getCrop() const {
+    return crop->clone();
+}
 
-    for (int i = 0; i <= f.getLength(); i++)
-    {
-        if (c == 0)
-            break;
+int Seed::plant(Field& f, int lotIndex, long long seconds) {
+    auto cropClone = this->getCrop();
 
-        if (f.getLotStatus(i) == 0)
-        {
-            f.plantCrop(i, crop->clone(), seconds);
-            plantedSeeds++;
-            c--;
-        }
-    }
-    if (plantedSeeds == 0)
-        return -1;
+    f.plantCrop(lotIndex, std::move(cropClone), seconds);
 
-    this->setQuantity(this->getQuantity() - plantedSeeds);
+    this->setQuantity(this->getQuantity() - 1);
+
     return 0;
 }

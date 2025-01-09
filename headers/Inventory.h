@@ -69,6 +69,15 @@ public:
         }
     }
 
+    std::shared_ptr<T> getItem(int index) const
+    {
+        if (index >= 0 && index < items.size())
+        {
+            return items[index];
+        }
+        throw InventoryException();
+    }
+
     void showInventory() const
     {
         for (const auto& item : items)

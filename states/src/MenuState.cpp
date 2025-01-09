@@ -1,5 +1,6 @@
 #include "../headers/MenuState.h"
 #include "../headers/TutorialState.h"
+#include "../headers/PlayingState.h"
 #include "../../headers/GameStateManager.h"
 #include <iostream>
 
@@ -55,6 +56,7 @@ void MenuState::handleInput(sf::Event* event)
             {
             case 0:
                 std::cout << "Start" << std::endl;
+                GameStateManager::getInstance().pushState(std::make_unique<PlayingState>());
                 break;
             case 1:
                 std::cout << "Tutorial" << std::endl;

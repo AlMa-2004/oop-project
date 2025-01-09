@@ -34,9 +34,12 @@ public:
      * @brief Plants the seed in available lots within the field.
      * @param f Reference to the Field object where the seeds will be planted.
      * @param c The quantity of seeds to be planted.
+     * @param seconds The timestamp at which the seed was planted.
      * @return Returns 0 if at least one seed was planted, or -1 if no lots were available.
      */
     int plant(Field& f, int c, long long seconds);
+
+    [[nodiscard]] std::unique_ptr<Crop> getCrop() const;
 };
 
 #endif // SEED_H

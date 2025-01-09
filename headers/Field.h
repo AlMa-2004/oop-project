@@ -80,6 +80,8 @@ public:
      * @throws EmptyLotException if all lots are empty.
      * @throws CropNotFoundException if no crops of the desired type are found.
      */
+    [[nodiscard]] std::unique_ptr<Crop> getCrop(int lotIndex);
+
     template <typename T>
     std::shared_ptr<Item> harvestCropLike()
     {

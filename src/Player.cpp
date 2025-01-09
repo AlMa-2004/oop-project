@@ -9,10 +9,9 @@ Player::Player()
 }
 
 // Parameterized constructor: initializes player with given name and money
-Player::Player(std::string  name, const int money)
+Player::Player(std::string name, const int money)
     : playerName(std::move(name)), playerMoney(money)
 {
-
 }
 
 std::ostream& operator<<(std::ostream& os, const Player& player)
@@ -57,6 +56,31 @@ void Player::sellHarvest(const std::string& harvestName, int quantity)
     harvestInventory.sellItem(harvestName, quantity, playerMoney);
 }
 
+std::shared_ptr<Seed> Player::getSeedByIndex(const int index) const
+{
+    try
+    {
+        return seedInventory.getItem(index);
+    }
+    catch (const InventoryException&)
+    {
+        std::cerr << " Seed not found at index " << index << std::endl;
+        return nullptr;
+    }
+}
+
+std::shared_ptr<Harvest> Player::getHarvestByIndex(const int index) const
+{
+    try
+    {
+        return harvestInventory.getItem(index);
+    }
+    catch (const InventoryException&)
+    {
+        std::cerr << "Error: Seed not found at index " << index << std::endl;
+        return nullptr;
+    }
+}
 
 void Player::showSeedInventory() const
 {

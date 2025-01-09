@@ -42,7 +42,7 @@ public:
      * @param name The player's name.
      * @param money The amount of money the player has.
      */
-    explicit Player(std::string  name, int money);
+    explicit Player(std::string name, int money);
 
     // OPERATOR OVERLOADING
 
@@ -62,6 +62,8 @@ public:
     void removeHarvest(const std::string& harvestName, int quantity);
     void sellSeed(const std::string& seedName, int quantity);
     void sellHarvest(const std::string& harvestName, int quantity);
+    [[nodiscard]] std::shared_ptr<Seed> getSeedByIndex(int index) const;
+    [[nodiscard]] std::shared_ptr<Harvest> getHarvestByIndex(int index) const;
     void showSeedInventory() const;
     void showHarvestInventory() const;
 };
